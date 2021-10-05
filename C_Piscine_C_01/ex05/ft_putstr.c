@@ -1,48 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maferrei <maferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/26 12:49:33 by maferrei          #+#    #+#             */
-/*   Updated: 2021/09/27 15:18:32 by maferrei         ###   ########.fr       */
+/*   Created: 2021/09/27 21:08:47 by maferrei          #+#    #+#             */
+/*   Updated: 2021/09/28 15:21:32 by maferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	num3(char x, char y, char z)
+void	ft_putchar(char x)
 {
 	write(1, &x, 1);
-	write(1, &y, 1);
-	write(1, &z, 1);
-	if (x != '7' || y != '8' || z != '9')
-	{
-		write(1, ", ", 2);
-	}
 }
 
-void	ft_print_comb(void)
+void	ft_putstr(char *str)
 {
-	char	a;
-	char	b;
-	char	c;
+	int	a;
 
-	a = '0';
-	while (a <= '7')
+	a = 0;
+	while (str[a] != '\0')
 	{
-		b = a + 1;
-		while (b <= '8')
-		{
-			c = b + 1;
-			while (c <= '9')
-			{
-				num3(a, b, c);
-				c++;
-			}
-			b++;
-		}
+		ft_putchar(str[a]);
 		a++;
 	}
 }

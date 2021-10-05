@@ -1,48 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maferrei <maferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/26 12:49:33 by maferrei          #+#    #+#             */
-/*   Updated: 2021/09/27 15:18:32 by maferrei         ###   ########.fr       */
+/*   Created: 2021/09/30 12:29:17 by maferrei          #+#    #+#             */
+/*   Updated: 2021/10/01 11:50:38 by maferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	num3(char x, char y, char z)
+char	*ft_strlowcase(char *str)
 {
-	write(1, &x, 1);
-	write(1, &y, 1);
-	write(1, &z, 1);
-	if (x != '7' || y != '8' || z != '9')
-	{
-		write(1, ", ", 2);
-	}
-}
+	int	x;
 
-void	ft_print_comb(void)
-{
-	char	a;
-	char	b;
-	char	c;
-
-	a = '0';
-	while (a <= '7')
+	x = 0;
+	while (str[x] != '\0')
 	{
-		b = a + 1;
-		while (b <= '8')
-		{
-			c = b + 1;
-			while (c <= '9')
-			{
-				num3(a, b, c);
-				c++;
-			}
-			b++;
-		}
-		a++;
+		if (str[x] >= 65 && str[x] <= 90)
+			str[x] = str[x] + 32;
+		++x;
 	}
+	return (str);
 }

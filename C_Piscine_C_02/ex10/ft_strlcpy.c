@@ -1,48 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maferrei <maferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/26 12:49:33 by maferrei          #+#    #+#             */
-/*   Updated: 2021/09/27 15:18:32 by maferrei         ###   ########.fr       */
+/*   Created: 2021/09/30 16:19:10 by maferrei          #+#    #+#             */
+/*   Updated: 2021/10/01 11:54:03 by maferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	num3(char x, char y, char z)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	write(1, &x, 1);
-	write(1, &y, 1);
-	write(1, &z, 1);
-	if (x != '7' || y != '8' || z != '9')
-	{
-		write(1, ", ", 2);
-	}
-}
+	unsigned int	x;
+	unsigned int	len;
 
-void	ft_print_comb(void)
-{
-	char	a;
-	char	b;
-	char	c;
-
-	a = '0';
-	while (a <= '7')
+	len = 0;
+	while (src[len])
+		++len;
+	if (size == 0)
+		return (len);
+	x = 0;
+	while (src[x] && x < size - 1)
 	{
-		b = a + 1;
-		while (b <= '8')
-		{
-			c = b + 1;
-			while (c <= '9')
-			{
-				num3(a, b, c);
-				c++;
-			}
-			b++;
-		}
-		a++;
+		dest[x] = src[x];
+		++x;
 	}
+	dest[x] = '\0';
+	return (len);
 }

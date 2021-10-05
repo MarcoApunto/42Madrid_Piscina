@@ -1,48 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maferrei <maferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/26 12:49:33 by maferrei          #+#    #+#             */
-/*   Updated: 2021/09/27 15:18:32 by maferrei         ###   ########.fr       */
+/*   Created: 2021/09/29 17:06:31 by maferrei          #+#    #+#             */
+/*   Updated: 2021/10/02 20:48:04 by maferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	num3(char x, char y, char z)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	write(1, &x, 1);
-	write(1, &y, 1);
-	write(1, &z, 1);
-	if (x != '7' || y != '8' || z != '9')
-	{
-		write(1, ", ", 2);
-	}
-}
+	unsigned int	x;
 
-void	ft_print_comb(void)
-{
-	char	a;
-	char	b;
-	char	c;
-
-	a = '0';
-	while (a <= '7')
+	x = 0;
+	while (src[x] && x < n)
 	{
-		b = a + 1;
-		while (b <= '8')
-		{
-			c = b + 1;
-			while (c <= '9')
-			{
-				num3(a, b, c);
-				c++;
-			}
-			b++;
-		}
-		a++;
+		dest[x] = src[x];
+		++x;
 	}
+	while (x < n)
+	{
+		dest[x] = '\0';
+		++x;
+	}
+	return (dest);
 }
